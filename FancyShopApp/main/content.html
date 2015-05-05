@@ -51,11 +51,17 @@
 				float: left;
 			}
 			.mui-control-content {
-				background-color: white;
-				min-height: 215px;
+				min-height: 410px;
 			}
 			.mui-control-content .mui-loading {
-				margin-top: 50px;
+				margin-top: 44px;
+			}
+			.mui-popover {
+				height: 120px;
+			}
+			.mui-popover-arrow {
+				left: auto;
+				right: 6px;
 			}
 		</style>
 	</head>
@@ -81,46 +87,44 @@
 		</nav>
 		<div class="mui-content">
 			<div id="tabbar" class="mui-control-content mui-active">
-				<div class="mui-content">
-					<ul class="mui-table-view mui-grid-view mui-grid-9">
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-home"></span>
-								<div class="mui-media-body">主页</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-phone"></span>
-								<div class="mui-media-body">电话</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-email"><span class="mui-badge">4</span></span>
-								<div class="mui-media-body">信息</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-location"></span>
-								<div class="mui-media-body">本地</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-gear"></span>
-								<div class="mui-media-body">设置</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<a href="#">
-								<span class="mui-icon mui-icon-info"></span>
-								<div class="mui-media-body">关于</div>
-							</a>
-						</li>
-					</ul>
-				</div>
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-home"></span>
+							<div class="mui-media-body">主页</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-phone"></span>
+							<div class="mui-media-body">电话</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-email"><span class="mui-badge">4</span></span>
+							<div class="mui-media-body">信息</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-location"></span>
+							<div class="mui-media-body">本地</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-gear"></span>
+							<div class="mui-media-body">设置</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="mui-icon mui-icon-info"></span>
+							<div class="mui-media-body">关于</div>
+						</a>
+					</li>
+				</ul>
 			</div>
 			<div id="tabbar-with-chat" class="mui-control-content">
 				<div id="slider" class="mui-slider">
@@ -133,22 +137,34 @@
 					<div class="mui-slider-group">
 						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 							<div id="scroll1" class="mui-scroll-wrapper">
-								<div class="mui-scroll">
-									<ul class="mui-table-view mui-table-view-chevron">
-										<li class="mui-table-view-cell">
-											上海移动10元-15921657546
-											<button type="button" class="mui-btn mui-btn-primary">
-												待支付
-											</button>
-										</li>
-										<li class="mui-table-view-cell">
-											黑龙江联通100元-15921657546
-											<button type="button" class="mui-btn mui-btn-primary">
-												待支付
-											</button>
-										</li>
-									</ul>
-								</div>
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-collapse">
+										<a class="mui-navigate-right" href="#">上海移动10元&nbsp;-&nbsp;15921657546&nbsp;-&nbsp;待支付</a>
+										<div class="mui-collapse-content">
+											<form class="mui-input-group">
+												<div class="mui-input-row">
+													<label>订单号：E10000000283&nbsp;&nbsp;数量：1</label>
+												</div>
+												<div class="mui-input-row">
+													<label>总金额：10元&nbsp;&nbsp;状态：未支付</label>
+												</div>
+												<div class="mui-button-row">
+													<a href="#middlePopover" class="mui-btn mui-btn-primary" style="padding: 5px 20px;">立即支付</a>
+												</div>
+											</form>
+										</div>
+									</li>
+									<li class="mui-table-view-cell mui-collapse">
+										<a class="mui-navigate-right" href="#">黑龙江联通100元-15921657546-待支付</a>
+										<div class="mui-collapse-content">
+											<form class="mui-input-group">
+												<div class="mui-button-row">
+													<button class="mui-btn mui-btn-primary" type="button" onclick="return false;">支付</button>
+												</div>
+											</form>
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 						<div id="item2mobile" class="mui-slider-item mui-control-content">
@@ -250,6 +266,18 @@
 				</ul>
 			</div>
 		</div>
+		<div id="middlePopover" class="mui-popover">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-input-row mui-radio">
+					<label>欧非10.5元</label>
+					<input name="radio" type="radio" checked>
+				</li>
+				<li class="mui-table-view-cell mui-input-row mui-radio">
+					<label>易宝10.2元</label>
+					<input name="radio" type="radio">
+				</li>
+			</ul>
+		</div>
 	</body>
 	<script>
 		mui.init({
@@ -279,6 +307,13 @@
 				}
 			});
 		})(mui);
+		mui('.mui-scroll-wrapper').scroll();
+		mui('body').on('shown', '.mui-popover', function(e) {
+			//console.log('shown', e.detail.id);//detail为当前popover元素
+		});
+		mui('body').on('hidden', '.mui-popover', function(e) {
+			//console.log('hidden', e.detail.id);//detail为当前popover元素
+		});
 	</script>
 
 </html>
