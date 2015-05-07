@@ -133,7 +133,7 @@
 						<a class="mui-control-item" href="#item2mobile">	昨日订单</a>
 						<a class="mui-control-item" href="#item3mobile">	历史订单</a>
 					</div>
-					<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>-->
+					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
 					<div class="mui-slider-group">
 						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 							<div id="scroll1" class="mui-scroll-wrapper">
@@ -158,8 +158,14 @@
 										<a class="mui-navigate-right" href="#">黑龙江联通100元-15921657546-待支付</a>
 										<div class="mui-collapse-content">
 											<form class="mui-input-group">
+												<div class="mui-input-row">
+													<label>订单号：E10000000284&nbsp;&nbsp;数量：1</label>
+												</div>
+												<div class="mui-input-row">
+													<label>总金额：100元&nbsp;&nbsp;状态：未支付</label>
+												</div>
 												<div class="mui-button-row">
-													<button class="mui-btn mui-btn-primary" type="button" onclick="return false;">支付</button>
+													<a href="#middlePopover" class="mui-btn mui-btn-primary" style="padding: 5px 20px;">立即支付</a>
 												</div>
 											</form>
 										</div>
@@ -268,11 +274,11 @@
 		</div>
 		<div id="middlePopover" class="mui-popover">
 			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-input-row mui-radio">
+				<li id="oufei" class="mui-table-view-cell mui-input-row mui-radio">
 					<label>欧非10.5元</label>
 					<input name="radio" type="radio" checked>
 				</li>
-				<li class="mui-table-view-cell mui-input-row mui-radio">
+				<li id="yibao" class="mui-table-view-cell mui-input-row mui-radio">
 					<label>易宝10.2元</label>
 					<input name="radio" type="radio">
 				</li>
@@ -313,6 +319,12 @@
 		});
 		mui('body').on('hidden', '.mui-popover', function(e) {
 			//console.log('hidden', e.detail.id);//detail为当前popover元素
+		});
+		document.getElementById('oufei').addEventListener('tap', function(e) {
+			mui.toast("支付完成")
+		});
+		document.getElementById('yibao').addEventListener('tap', function(e) {
+			alert("yibao")
 		});
 	</script>
 

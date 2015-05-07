@@ -16,16 +16,10 @@ var app = {
 				localStorage.removeItem("mobile");
 				msg.innerText = data.msg + ",需要重新验证！";
 			} else {
+//				mui.toast("欢迎回来！");
 				location.href = "main/main.html";
 			}
 		});
 	}
 
 };
-
-function login() {
-	app.verification(mo.value);
-	localStorage.setItem("mobile", mo.value);
-}
-
-app.initialize();
