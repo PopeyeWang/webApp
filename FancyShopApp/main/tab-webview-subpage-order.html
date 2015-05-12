@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>tab-webview-subpage-order</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		</style>
+		<script>
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">	今日订单</a>
+					<a class="mui-control-item" href="#item2mobile">	昨日订单</a>
+					<a class="mui-control-item" href="#item3mobile">	历史订单</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-collapse">
+										<a class="mui-navigate-right" href="#">上海移动10元&nbsp;-&nbsp;15921657546&nbsp;-&nbsp;待支付</a>
+										<div class="mui-collapse-content">
+											<form class="mui-input-group">
+												<div class="mui-input-row">
+													<label>订单号：E10000000283&nbsp;&nbsp;数量：1</label>
+												</div>
+												<div class="mui-input-row">
+													<label>总金额：10元&nbsp;&nbsp;状态：未支付</label>
+												</div>
+												<div class="mui-button-row">
+													<a href="#middlePopover" class="mui-btn mui-btn-primary" style="padding: 5px 20px;">立即支付</a>
+												</div>
+											</form>
+										</div>
+									</li>
+									<li class="mui-table-view-cell mui-collapse">
+										<a class="mui-navigate-right" href="#">黑龙江联通100元-15921657546-待支付</a>
+										<div class="mui-collapse-content">
+											<form class="mui-input-group">
+												<div class="mui-input-row">
+													<label>订单号：E10000000284&nbsp;&nbsp;数量：1</label>
+												</div>
+												<div class="mui-input-row">
+													<label>总金额：100元&nbsp;&nbsp;状态：未支付</label>
+												</div>
+												<div class="mui-button-row">
+													<a href="#middlePopover" class="mui-btn mui-btn-primary" style="padding: 5px 20px;">立即支付</a>
+												</div>
+											</form>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			mui.init({
+				swipeBack: false,
+				pullRefresh: {
+					container: '#item1mobile',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
+				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item2.querySelector('.mui-scroll').innerHTML = html2;
+							}, 700);
+						}
+					} else if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item3.querySelector('.mui-scroll').innerHTML = html3;
+							}, 700);
+						}
+					}
+				});
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				$('.mui-input-group').on('change', 'input', function() {
+					if (this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			})(mui);
+			 //			mui('body').on('shown', '.mui-popover', function(e) {
+			 //				//console.log('shown', e.detail.id);//detail为当前popover元素
+			 //			});
+			 //			mui('body').on('hidden', '.mui-popover', function(e) {
+			 //				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			 //			});
+			 //			document.getElementById('oufei').addEventListener('tap', function(e) {
+			 //				mui.toast("支付完成")
+			 //			});
+			 //			document.getElementById('yibao').addEventListener('tap', function(e) {
+			 //				alert("yibao")
+			 //			});
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#item1mobile').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 10; i < 20; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell mui-collapse';
+						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						table.appendChild(li);
+					}
+				}, 1000);
+			}
+		</script>
+	</body>
+
+</html>
